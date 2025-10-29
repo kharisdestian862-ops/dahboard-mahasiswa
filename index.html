@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Student Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="login-card">
+        <div class="login-header">
+          <div class="logo">🎓</div>
+          <h1>Welcome Back</h1>
+          <p>Sign in to access your student dashboard</p>
+        </div>
+
+        <form class="login-form">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="yourname@student.edu" required />
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" placeholder="••••••••" required />
+          </div>
+          <button type="submit">Sign In</button>
+        </form>
+
+        <div class="login-footer">
+          <p>
+            Don’t have an account?
+            <a href="#">Register</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <script>
+      document
+        .querySelector(".login-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault(); // biar gak reload halaman
+          window.location.href = "dashboard.html"; // arahkan ke halaman utama
+        });
+    </script>
+  </body>
+</html>

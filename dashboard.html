@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="profile">
+          <div class="avatar">KD</div>
+          <div>
+            <div class="name">Kharis Destian Maulana</div>
+            <div class="program">Informatics Engineering • 2023</div>
+          </div>
+        </div>
+        <nav>
+          <a href="#" class="active" data-section="dashboard">Dashboard</a>
+          <a href="#" data-section="profile">Profile</a>
+          <a href="#" data-section="grades">Grades</a>
+          <a href="#" data-section="attendance">Attendance</a>
+          <a href="#" data-section="settings">Settings</a>
+        </nav>
+      </aside>
+
+      <!-- Main + Right Sidebar Wrapper -->
+      <div class="main-wrapper">
+        <!-- Main Content -->
+        <main class="main-content">
+          <!-- Dashboard Section -->
+          <section class="section" id="dashboard">
+            <header class="main-header">
+              <h1>Learning Dashboard</h1>
+              <div>Welcome back, Kharis</div>
+            </header>
+
+            <!-- Stats Cards -->
+            <section class="cards">
+              <div class="card">
+                <div class="card-title">IPK</div>
+                <div class="card-value">3.42</div>
+                <div class="card-subtitle">Weighted Average</div>
+              </div>
+              <div class="card">
+                <div class="card-title">Credits</div>
+                <div class="card-value">13</div>
+                <div class="card-subtitle">This Semester</div>
+              </div>
+              <div class="card">
+                <div class="card-title">Attendance</div>
+                <div class="card-value">85%</div>
+                <div class="card-subtitle">Overall</div>
+              </div>
+              <div class="card">
+                <div class="card-title">Active Courses</div>
+                <div class="card-value">4</div>
+                <div class="card-subtitle">Now</div>
+              </div>
+            </section>
+
+            <!-- Learning Progress + Courses Table -->
+            <section class="main-section">
+              <div class="chart-section">
+                <div class="chart-header">
+                  <h2>Learning Progress</h2>
+                  <select id="courseSelect">
+                    <option value="programming">Intro to Programming</option>
+                    <option value="math">Discrete Math</option>
+                    <option value="algorithms">Algorithms</option>
+                    <option value="database">Databases</option>
+                  </select>
+                </div>
+                <canvas id="progressChart"></canvas>
+              </div>
+
+              <div class="grades-section">
+                <h2>Courses & Grades</h2>
+                <div class="grades-list">
+                  <div class="grade-row">
+                    <div>
+                      <div class="grade-course">Intro to Programming</div>
+                      <div class="grade-info">CS101 • 3 credits</div>
+                    </div>
+                    <div class="grade-score">88</div>
+                  </div>
+                  <div class="grade-row">
+                    <div>
+                      <div class="grade-course">Discrete Math</div>
+                      <div class="grade-info">MT202 • 3 credits</div>
+                    </div>
+                    <div class="grade-score">78</div>
+                  </div>
+                  <div class="grade-row">
+                    <div>
+                      <div class="grade-course">Algorithms</div>
+                      <div class="grade-info">GL303 • 4 credits</div>
+                    </div>
+                    <div class="grade-score">92</div>
+                  </div>
+                  <div class="grade-row">
+                    <div>
+                      <div class="grade-course">Databases</div>
+                      <div class="grade-info">DB204 • 3 credits</div>
+                    </div>
+                    <div class="grade-score">81</div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </section>
+
+          <!-- Profile Section -->
+          <section class="section" id="profile" style="display: none">
+            <h2>Profile</h2>
+            <div class="profile-info">
+              <div class="info-item">
+                <span class="info-label">Name:</span>
+                <span class="info-value">Kharis Destian Maulana</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">NIM:</span>
+                <span class="info-value">2023001</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Program:</span>
+                <span class="info-value">Informatics Engineering</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Year:</span>
+                <span class="info-value">2023</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Semester:</span>
+                <span class="info-value">4</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Email:</span>
+                <span class="info-value">kharis.destian@example.ac.id</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Grades Section -->
+          <section class="section" id="grades" style="display: none">
+            <h2>Grades</h2>
+            <div class="grades-list">
+              <div class="grade-row">
+                <div>
+                  <div class="grade-course">Intro to Programming</div>
+                  <div class="grade-info">CS101 • 3 credits • Semester 3</div>
+                </div>
+                <div class="grade-score">88</div>
+              </div>
+              <div class="grade-row">
+                <div>
+                  <div class="grade-course">Discrete Math</div>
+                  <div class="grade-info">MT202 • 3 credits • Semester 3</div>
+                </div>
+                <div class="grade-score">78</div>
+              </div>
+              <div class="grade-row">
+                <div>
+                  <div class="grade-course">Algorithms</div>
+                  <div class="grade-info">GL303 • 4 credits • Semester 4</div>
+                </div>
+                <div class="grade-score">92</div>
+              </div>
+              <div class="grade-row">
+                <div>
+                  <div class="grade-course">Databases</div>
+                  <div class="grade-info">DB204 • 3 credits • Semester 4</div>
+                </div>
+                <div class="grade-score">81</div>
+              </div>
+              <div class="grade-row">
+                <div>
+                  <div class="grade-course">Web Development</div>
+                  <div class="grade-info">WD305 • 3 credits • Semester 4</div>
+                </div>
+                <div class="grade-score">85</div>
+              </div>
+              <div class="grade-row">
+                <div>
+                  <div class="grade-course">Software Engineering</div>
+                  <div class="grade-info">SE401 • 4 credits • Semester 4</div>
+                </div>
+                <div class="grade-score">79</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Attendance Section - UPDATED WITH 14 MEETINGS -->
+          <section class="section" id="attendance" style="display: none">
+            <h2>Attendance - Semester 4</h2>
+
+            <!-- Attendance Summary -->
+            <div class="attendance-summary">
+              <div class="summary-card">
+                <div class="summary-value">85%</div>
+                <div class="summary-label">Overall Attendance</div>
+              </div>
+              <div class="summary-card">
+                <div class="summary-value">12</div>
+                <div class="summary-label">Present</div>
+              </div>
+              <div class="summary-card">
+                <div class="summary-value">2</div>
+                <div class="summary-label">Absent</div>
+              </div>
+              <div class="summary-card">
+                <div class="summary-value">0</div>
+                <div class="summary-label">Late</div>
+              </div>
+            </div>
+
+            <!-- Course Selection -->
+            <div class="course-filter">
+              <label for="attendanceCourse">Select Course:</label>
+              <select id="attendanceCourse">
+                <option value="all">All Courses</option>
+                <option value="algorithms">Algorithms</option>
+                <option value="databases">Databases</option>
+                <option value="webdev">Web Development</option>
+                <option value="softwareeng">Software Engineering</option>
+              </select>
+            </div>
+
+            <!-- Detailed Attendance Table -->
+            <div class="attendance-details">
+              <h3>Detailed Attendance Record</h3>
+              <div class="attendance-table">
+                <div class="table-header">
+                  <div class="col-meeting">Meeting</div>
+                  <div class="col-date">Date</div>
+                  <div class="col-course">Course</div>
+                  <div class="col-topic">Topic</div>
+                  <div class="col-status">Status</div>
+                  <div class="col-notes">Notes</div>
+                </div>
+
+                <div class="table-body">
+                  <!-- Meeting 1 -->
+                  <div class="table-row">
+                    <div class="col-meeting">1</div>
+                    <div class="col-date">Jan 15, 2024</div>
+                    <div class="col-course">Algorithms</div>
+                    <div class="col-topic">Introduction to Algorithms</div>
+                    <div class="col-status">
+                      <span class="present">Present</span>
+                    </div>
+                    <div class="col-notes">-</div>
+                  </div>
+
+                  <!-- Meeting 2 -->
+                  <div class="table-row">
+                    <div class="col-meeting">2</div>
+                    <div class="col-date">Jan 17, 2024</div>
+                    <div class="col-course">Databases</div>
+                    <div class="col-topic">Database Design</div>
+                    <div class="col-status">
+                      <span class="present">Present</span>
+                    </div>
+                    <div class="col-notes">-</div>
+                  </div>
+
+                  <!-- Meeting 3 -->
+                  <div class="table-row">
+                    <div class="col-meeting">3</div>
+                    <div class="col-date">Jan 22, 2024</div>
+                    <div class="col-course">Web Development</div>
+                    <div class="col-topic">HTML & CSS Fundamentals</div>
+                    <div class="col-status">
+                      <span class="present">Present</span>
+                    </div>
+                    <div class="col-notes">-</div>
+                  </div>
+
+                  <!-- Meeting 4 -->
+                  <div class="table-row">
+                    <div class="col-meeting">4</div>
+                    <div class="col-date">Jan 24, 2024</div>
+                    <div class="col-course">Software Engineering</div>
+                    <div class="col-topic">Software Development Life Cycle</div>
+                    <div class="col-status">
+                      <span class="present">Present</span>
+                    </div>
+                    <div class="col-notes">-</div>
+                  </div>
+
+                  <!-- Meeting 5 -->
+                  <div class="table-row">
+                    <div class="col-meeting">5</div>
+                    <div class="col-date">Jan 29, 2024</div>
+                    <div class="col-course">Algorithms</div>
+                    <div class="col-topic">Sorting Algorithms</div>
+                    <div class="col-status">
+                      <span class="present">Present</span>
+                    </div>
+                    <div class="col-notes">-</div>
+                  </div>
+
+                  <!-- Meeting 6 -->
+                  <div class="table-row">
+                    <div class="col-meeting">6</div>
+                    <div class="col-date">Jan 31, 2024</div>
+                    <div class="col-course">Databases</div>
+                    <div class="col-topic">SQL Queries</div>
+                    <div class="col-status">
+                      <span class="present">Present</span>
+                    </div>
+                    <div class="col-notes">-</div>
+                  </div>
+
+                  <!-- Meeting 7 -->
+                  <div class="table-row">
+                    <div class="col-meeting">7</div>
+                    <div class="col-date">Feb 5, 2024</div>
+                    <div class="col-course">Web Development</div>
+                    <div class="col-topic">JavaScript Basics</div>
+                    <div class="col-status">
+                      <span class="present">Present</span>
+                    </div>
+                    <div class="col-notes">-</div>
+                  </div>
+
+                  <!-- Meeting 8 -->
+                  <div class="table-row">
+                    <div class="col-meeting">8</div>
+                    <div class="col-date">Feb 7, 2024</div>
+                    <div class="col-course">Software Engineering</div>
+                    <div class="col-topic">Requirements Analysis</div>
+                    <div class="col-status">
+                      <span class="absent">Absent</span>
+                    </div>
+                    <div class="col-notes">Sick Leave</div>
+                  </div>
+
+                  <!-- Meeting 9 -->
+                  <div class="table-row">
+                    <div class="col-meeting">9</div>
+                    <div class="col-date">Feb 12, 2024</div>
+                    <div class="col-course">Algorithms</div>
+                    <div class="col-topic">Graph Algorithms</div>
+                    <div class="col-status">
+                      <span class="present">Present</span>
+                    </div>
+                    <div class="col-notes">-</div>
+                  </div>
+
+                  <!-- Meeting 10 -->
+                  <div class="table-row">
+                    <div class="col-meeting">10</div>
+                    <div class="col-date">Feb 14, 2024</div>
+                    <div class="col-course">Databases</div>
+                    <div class="col-topic">Normalization</div>
+                    <div class="col-status">
+                      <span class="present">Present</span>
+                    </div>
+                    <div class="col-notes">-</div>
+                  </div>
+
+                  <!-- Meeting 11 -->
+                  <div class="table-row">
+                    <div class="col-meeting">11</div>
+                    <div class="col-date">Feb 19, 2024</div>
+                    <div class="col-course">Web Development</div>
+                    <div class="col-topic">Frontend Frameworks</div>
+                    <div class="col-status">
+                      <span class="present">Present</span>
+                    </div>
+                    <div class="col-notes">-</div>
+                  </div>
+
+                  <!-- Meeting 12 -->
+                  <div class="table-row">
+                    <div class="col-meeting">12</div>
+                    <div class="col-date">Feb 21, 2024</div>
+                    <div class="col-course">Software Engineering</div>
+                    <div class="col-topic">System Design</div>
+                    <div class="col-status">
+                      <span class="present">Present</span>
+                    </div>
+                    <div class="col-notes">-</div>
+                  </div>
+
+                  <!-- Meeting 13 -->
+                  <div class="table-row">
+                    <div class="col-meeting">13</div>
+                    <div class="col-date">Feb 26, 2024</div>
+                    <div class="col-course">Algorithms</div>
+                    <div class="col-topic">Dynamic Programming</div>
+                    <div class="col-status">
+                      <span class="absent">Absent</span>
+                    </div>
+                    <div class="col-notes">Family Emergency</div>
+                  </div>
+
+                  <!-- Meeting 14 -->
+                  <div class="table-row">
+                    <div class="col-meeting">14</div>
+                    <div class="col-date">Feb 28, 2024</div>
+                    <div class="col-course">All Courses</div>
+                    <div class="col-topic">Final Exam Preparation</div>
+                    <div class="col-status">
+                      <span class="present">Present</span>
+                    </div>
+                    <div class="col-notes">-</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Attendance Legend -->
+            <div class="attendance-legend">
+              <div class="legend-item">
+                <span class="legend-color present"></span>
+                <span class="legend-text">Present</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-color absent"></span>
+                <span class="legend-text">Absent</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-color late"></span>
+                <span class="legend-text">Late</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-color excused"></span>
+                <span class="legend-text">Excused</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Settings Section -->
+          <section class="section" id="settings" style="display: none">
+            <h2>Settings</h2>
+            <div class="settings-content">
+              <div class="setting-group">
+                <h3>Account Settings</h3>
+                <div class="setting-item">
+                  <label for="emailNotifications">Email Notifications</label>
+                  <input type="checkbox" id="emailNotifications" checked />
+                </div>
+                <div class="setting-item">
+                  <label for="darkMode">Dark Mode</label>
+                  <input type="checkbox" id="darkMode" />
+                </div>
+              </div>
+
+              <div class="setting-group">
+                <h3>Privacy Settings</h3>
+                <div class="setting-item">
+                  <label for="profileVisibility">Profile Visibility</label>
+                  <select id="profileVisibility">
+                    <option value="public">Public</option>
+                    <option value="students">Students Only</option>
+                    <option value="private">Private</option>
+                  </select>
+                </div>
+              </div>
+
+              <button class="save-settings">Save Settings</button>
+            </div>
+          </section>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="sidebar-right">
+          <div class="student-info">
+            <h3>Kharis Destian Maulana</h3>
+            <p>NIM: 2023001</p>
+            <p>Informatics Engineering</p>
+            <p>Semester Progress</p>
+            <div class="progress-bg">
+              <div class="progress-bar" style="width: 72%"></div>
+            </div>
+            <div class="progress-text">72% Complete</div>
+          </div>
+
+          <div class="attendance">
+            <h3>Quick Attendance Overview</h3>
+            <div class="attendance-stats">
+              <div class="stat-item">
+                <span class="stat-value">85%</span>
+                <span class="stat-label">This Semester</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value">12/14</span>
+                <span class="stat-label">Meetings Attended</span>
+              </div>
+            </div>
+            <div class="attendance-warning">
+              <span class="warning-icon">⚠️</span>
+              <span>2 absences remaining</span>
+            </div>
+          </div>
+
+          <div class="quick-actions">
+            <h3>Quick Actions</h3>
+            <div class="actions">
+              <button>Download Transcript</button>
+              <button>Request Leave</button>
+              <button>Contact Advisor</button>
+              <button>View Attendance</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
