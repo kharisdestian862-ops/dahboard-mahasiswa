@@ -271,6 +271,10 @@ document.addEventListener("DOMContentLoaded", function () {
   switchSection("dashboard");
 });
 
+document.getElementById("logoutBtn").addEventListener("click", function () {
+  window.location.href = "index.html";
+});
+
 // ---- Additional Utility Functions ----
 
 // Update progress bar animation
