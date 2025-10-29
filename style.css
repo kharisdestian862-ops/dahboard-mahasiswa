@@ -1269,6 +1269,23 @@ button[type="submit"]:hover {
   text-decoration: underline;
 }
 
+.logout-btn {
+  margin-top: 2rem;
+  width: 100%;
+  padding: 0.8rem;
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.logout-btn:hover {
+  background: #c0392b;
+}
+
 /* Responsive */
 @media (max-width: 500px) {
   .login-card {
