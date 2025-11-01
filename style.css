@@ -398,7 +398,6 @@ body.menu-open {
   line-height: 1.4;
 }
 
-/* Main Content Grid */
 .main-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -408,7 +407,6 @@ body.menu-open {
   max-width: 100%;
 }
 
-/* Chart Section */
 .chart-section {
   background: var(--surface);
   padding: 1.5rem;
@@ -458,7 +456,6 @@ body.menu-open {
   max-width: 100%;
 }
 
-/* Grades Section */
 .grades-section {
   background: var(--surface);
   padding: 1.5rem;
@@ -543,7 +540,6 @@ body.menu-open {
   text-align: right;
 }
 
-/* Profile Section */
 .section {
   display: flex;
   flex-direction: column;
@@ -586,7 +582,6 @@ body.menu-open {
   word-wrap: break-word;
 }
 
-/* Attendance Section Styles */
 .attendance-summary {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -699,7 +694,6 @@ body.menu-open {
   font-style: italic;
 }
 
-/* Status Styles */
 .present {
   color: var(--success);
   font-weight: 600;
@@ -772,7 +766,6 @@ body.menu-open {
   background: #8b5cf6;
 }
 
-/* Right Sidebar */
 .sidebar-right {
   display: flex;
   flex-direction: column;
@@ -783,7 +776,6 @@ body.menu-open {
   max-width: 100%;
 }
 
-/* Student Info Card */
 .student-info {
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: white;
@@ -833,7 +825,6 @@ body.menu-open {
   opacity: 0.9;
 }
 
-/* Attendance Widget */
 .attendance {
   background: var(--surface);
   padding: 1.5rem;
@@ -887,7 +878,6 @@ body.menu-open {
   font-size: 1.25rem;
 }
 
-/* Quick Actions */
 .quick-actions {
   background: var(--surface);
   padding: 1.5rem;
@@ -939,7 +929,6 @@ body.menu-open {
   border-color: var(--primary);
 }
 
-/* Profile Info Styles */
 .profile-info {
   display: flex;
   flex-direction: column;
@@ -965,7 +954,6 @@ body.menu-open {
   color: var(--text-secondary);
 }
 
-/* Settings Styles */
 .settings-content {
   display: flex;
   flex-direction: column;
@@ -1028,6 +1016,19 @@ body.menu-open {
   background: #c0392b;
 }
 
+.logout-btn-mobile {
+  margin-top: 2rem;
+  width: 100%;
+  padding: 0.8rem;
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
 .login-container {
   display: flex;
   justify-content: center;
@@ -1070,7 +1071,6 @@ body.menu-open {
   margin-bottom: 25px;
 }
 
-/* Form */
 .login-form {
   display: flex;
   flex-direction: column;
@@ -1101,7 +1101,6 @@ body.menu-open {
   outline: none;
 }
 
-/* Button */
 button[type="submit"] {
   width: 100%;
   background: #6366f1;
@@ -1119,7 +1118,6 @@ button[type="submit"]:hover {
   background: #4f46e5;
 }
 
-/* Footer */
 .login-footer {
   margin-top: 25px;
   font-size: 13px;
@@ -1136,8 +1134,6 @@ button[type="submit"]:hover {
   text-decoration: underline;
 }
 
-
-/* Tablet (1024px ke bawah) */
 @media (max-width: 1024px) {
   .container {
     grid-template-columns: 1fr;
