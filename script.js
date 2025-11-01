@@ -1,12 +1,10 @@
-// ---- Hamburger Menu Functionality ----
 function initHamburgerMenu() {
-  // Create mobile header elements
   const mobileHeader = document.createElement("div");
   mobileHeader.className = "mobile-header";
   mobileHeader.innerHTML = `
     <div class="mobile-nav">
       <div class="mobile-profile">
-        <div class="mobile-avatar">KH</div>
+        <div class="mobile-avatar">KD</div>
         <div class="mobile-name">Kharis</div>
       </div>
       <button class="hamburger">
@@ -17,20 +15,18 @@ function initHamburgerMenu() {
     </div>
   `;
 
-  // Create mobile menu overlay
   const mobileMenuOverlay = document.createElement("div");
   mobileMenuOverlay.className = "mobile-menu-overlay";
 
-  // Create mobile sidebar
   const mobileSidebar = document.createElement("div");
   mobileSidebar.className = "mobile-sidebar";
   mobileSidebar.innerHTML = `
     <div class="mobile-sidebar-content">
       <div class="profile">
-        <div class="avatar">KH</div>
+        <div class="avatar">KD</div>
         <div>
-          <div class="name">Kharis</div>
-          <div class="program">Computer Science • 2023</div>
+          <div class="name">Kharis Destian Maulana</div>
+          <div class="program">Informatics Engineering • 2023</div>
         </div>
       </div>
       <nav>
@@ -43,27 +39,29 @@ function initHamburgerMenu() {
     </div>
   `;
 
-  // Insert elements into DOM
   document.body.insertBefore(mobileHeader, document.body.firstChild);
   document.body.appendChild(mobileMenuOverlay);
   document.body.appendChild(mobileSidebar);
 
-  // Hamburger menu functionality
   const hamburger = document.querySelector(".hamburger");
 
   function toggleMenu() {
+    const isActive = mobileSidebar.classList.contains("active");
+
     hamburger.classList.toggle("active");
     mobileMenuOverlay.classList.toggle("active");
     mobileSidebar.classList.toggle("active");
-    document.body.style.overflow = mobileSidebar.classList.contains("active")
-      ? "hidden"
-      : "";
+
+    if (!isActive) {
+      document.body.classList.add("menu-open");
+    } else {
+      document.body.classList.remove("menu-open");
+    }
   }
 
   hamburger.addEventListener("click", toggleMenu);
   mobileMenuOverlay.addEventListener("click", toggleMenu);
 
-  // Close menu when clicking on links
   const mobileLinks = document.querySelectorAll(".mobile-sidebar nav a");
   mobileLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
@@ -74,7 +72,6 @@ function initHamburgerMenu() {
     });
   });
 
-  // Close menu on escape key
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && mobileSidebar.classList.contains("active")) {
       toggleMenu();
@@ -82,17 +79,14 @@ function initHamburgerMenu() {
   });
 }
 
-// ---- Section Management ----
 function switchSection(sectionId) {
   const links = document.querySelectorAll(
     ".sidebar nav a, .mobile-sidebar nav a"
   );
   const sections = document.querySelectorAll(".section");
 
-  // Remove active class from all links
   links.forEach((link) => link.classList.remove("active"));
 
-  // Add active class to clicked link in both sidebars
   const desktopLink = document.querySelector(
     `.sidebar nav a[data-section="${sectionId}"]`
   );
@@ -103,15 +97,12 @@ function switchSection(sectionId) {
   if (desktopLink) desktopLink.classList.add("active");
   if (mobileLink) mobileLink.classList.add("active");
 
-  // Hide all sections
   sections.forEach((sec) => (sec.style.display = "none"));
 
-  // Show selected section
   const activeSection = document.getElementById(sectionId);
   if (activeSection) {
     activeSection.style.display = "flex";
 
-    // Reinitialize chart if switching to dashboard
     if (sectionId === "dashboard" && typeof chart !== "undefined") {
       setTimeout(() => {
         chart.resize();
@@ -120,7 +111,6 @@ function switchSection(sectionId) {
   }
 }
 
-// ---- Sidebar Interactive ----
 function initSidebar() {
   const links = document.querySelectorAll(".sidebar nav a");
 
@@ -133,11 +123,9 @@ function initSidebar() {
   });
 }
 
-// ---- Chart JS ----
 function initChart() {
   const ctx = document.getElementById("progressChart");
 
-  // Check if chart canvas exists
   if (!ctx) return;
 
   const courseData = {
@@ -218,14 +206,12 @@ function initChart() {
     },
   });
 
-  // Course select change handler
   const courseSelect = document.getElementById("courseSelect");
   if (courseSelect) {
     courseSelect.addEventListener("change", (e) => {
       const selected = e.target.value;
       chart.data.datasets[0].data = courseData[selected];
 
-      // Update line color based on course
       const colors = {
         programming: "#6366F1",
         math: "#10B981",
@@ -247,18 +233,63 @@ function initChart() {
   return chart;
 }
 
-// ---- Initialize Everything ----
+function initAttendanceFilter() {
+  const attendanceCourse = document.getElementById("attendanceCourse");
+
+  if (attendanceCourse) {
+    attendanceCourse.addEventListener("change", (e) => {
+      const selectedCourse = e.target.value;
+      const allRows = document.querySelectorAll(".table-body .table-row");
+
+      allRows.forEach((row) => {
+        const courseCell = row.querySelector(".col-course");
+        if (selectedCourse === "all") {
+          row.style.display = "grid";
+        } else {
+          const courseName = courseCell.textContent.toLowerCase();
+          if (courseName.includes(selectedCourse)) {
+            row.style.display = "grid";
+          } else {
+            row.style.display = "none";
+          }
+        }
+      });
+    });
+  }
+}
+
+function initLogout() {
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", function () {
+      if (confirm("Are you sure you want to logout?")) {
+        window.location.href = "index.html";
+      }
+    });
+  }
+}
+
+function updateProgressBar(percentage) {
+  const progressBar = document.querySelector(".progress-bar");
+  if (progressBar) {
+    progressBar.style.width = percentage + "%";
+  }
+}
+
+function simulateDataLoading() {
+  setTimeout(() => {
+    updateProgressBar(72);
+  }, 500);
+}
+
 document.addEventListener("DOMContentLoaded", function () {
-  // Initialize hamburger menu for mobile
   initHamburgerMenu();
-
-  // Initialize sidebar navigation
   initSidebar();
-
-  // Initialize chart
   let chart = initChart();
+  initAttendanceFilter();
+  initLogout();
 
-  // Handle window resize for chart
   window.addEventListener("resize", function () {
     if (chart) {
       setTimeout(() => {
@@ -267,31 +298,57 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Set initial active section
   switchSection("dashboard");
+  simulateDataLoading();
 });
 
-document.getElementById("logoutBtn").addEventListener("click", function () {
-  window.location.href = "index.html";
-});
+document.addEventListener("DOMContentLoaded", function () {
+  const saveSettingsBtn = document.querySelector(".save-settings");
 
-// ---- Additional Utility Functions ----
+  if (saveSettingsBtn) {
+    saveSettingsBtn.addEventListener("click", function () {
+      const emailNotifications =
+        document.getElementById("emailNotifications").checked;
+      const darkMode = document.getElementById("darkMode").checked;
+      const profileVisibility =
+        document.getElementById("profileVisibility").value;
 
-// Update progress bar animation
-function updateProgressBar(percentage) {
-  const progressBar = document.querySelector(".progress-bar");
-  if (progressBar) {
-    progressBar.style.width = percentage + "%";
+      const settings = {
+        emailNotifications,
+        darkMode,
+        profileVisibility,
+      };
+
+      localStorage.setItem("userSettings", JSON.stringify(settings));
+
+      alert("Settings saved successfully!");
+
+      if (darkMode) {
+        document.body.classList.add("dark-mode");
+      } else {
+        document.body.classList.remove("dark-mode");
+      }
+    });
   }
-}
 
-// Simulate loading data
-function simulateDataLoading() {
-  // Simulate progress bar animation
-  setTimeout(() => {
-    updateProgressBar(72);
-  }, 500);
-}
+  const savedSettings = localStorage.getItem("userSettings");
+  if (savedSettings) {
+    const settings = JSON.parse(savedSettings);
 
-// Call data simulation on dashboard load
-document.addEventListener("DOMContentLoaded", simulateDataLoading);
+    if (document.getElementById("emailNotifications")) {
+      document.getElementById("emailNotifications").checked =
+        settings.emailNotifications;
+    }
+    if (document.getElementById("darkMode")) {
+      document.getElementById("darkMode").checked = settings.darkMode;
+    }
+    if (document.getElementById("profileVisibility")) {
+      document.getElementById("profileVisibility").value =
+        settings.profileVisibility;
+    }
+
+    if (settings.darkMode) {
+      document.body.classList.add("dark-mode");
+    }
+  }
+});
