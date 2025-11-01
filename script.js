@@ -36,6 +36,7 @@ function initHamburgerMenu() {
         <a href="#" data-section="attendance">Attendance</a>
         <a href="#" data-section="settings">Settings</a>
       </nav>
+      <button class="logout-btn-mobile" id="logoutBtnMobile">Logout</button>
     </div>
   `;
 
@@ -260,13 +261,20 @@ function initAttendanceFilter() {
 
 function initLogout() {
   const logoutBtn = document.getElementById("logoutBtn");
+  const logoutBtnMobile = document.getElementById("logoutBtnMobile");
+
+  function handleLogout() {
+    if (confirm("Are you sure you want to logout?")) {
+      window.location.href = "index.html";
+    }
+  }
 
   if (logoutBtn) {
-    logoutBtn.addEventListener("click", function () {
-      if (confirm("Are you sure you want to logout?")) {
-        window.location.href = "index.html";
-      }
-    });
+    logoutBtn.addEventListener("click", handleLogout);
+  }
+
+  if (logoutBtnMobile) {
+    logoutBtnMobile.addEventListener("click", handleLogout);
   }
 }
 
