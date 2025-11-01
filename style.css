@@ -1,4 +1,3 @@
-/* Basic Reset */
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +13,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Modern Color Scheme */
 :root {
   --primary: #2563eb;
   --primary-dark: #1d4ed8;
@@ -30,11 +28,6 @@ body {
   --border: #e2e8f0;
 }
 
-/* ========================================= */
-/* MOBILE HEADER & HAMBURGER MENU */
-/* ========================================= */
-
-/* Mobile Header */
 .mobile-header {
   display: none;
   background: var(--surface);
@@ -80,7 +73,6 @@ body {
   color: var(--text-primary);
 }
 
-/* Hamburger Menu - Z-index tinggi untuk selalu di atas */
 .hamburger {
   display: flex;
   flex-direction: column;
@@ -104,7 +96,6 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Hamburger jadi putih saat menu aktif */
 .hamburger.active span {
   background: #ffffff;
 }
@@ -121,7 +112,6 @@ body {
   transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Mobile Menu Overlay - Menutupi SEMUA termasuk header */
 .mobile-menu-overlay {
   position: fixed;
   top: 0;
@@ -142,7 +132,6 @@ body {
   pointer-events: auto;
 }
 
-/* Mobile Sidebar - Di atas overlay */
 .mobile-sidebar {
   position: fixed;
   top: 0;
@@ -210,17 +199,11 @@ body {
   box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
 }
 
-/* Prevent body scroll when menu is open */
 body.menu-open {
   overflow: hidden;
   height: 100vh;
 }
 
-/* ========================================= */
-/* DESKTOP LAYOUT */
-/* ========================================= */
-
-/* Container Layout - Clean & Professional */
 .container {
   display: grid;
   grid-template-columns: 280px 1fr;
@@ -229,7 +212,6 @@ body.menu-open {
   gap: 0;
 }
 
-/* Sidebar - Professional Academic Style */
 .sidebar {
   background: var(--surface);
   border-right: 1px solid var(--border);
@@ -283,7 +265,6 @@ body.menu-open {
   word-wrap: break-word;
 }
 
-/* Navigation - Clean & Accessible */
 .sidebar nav {
   display: flex;
   flex-direction: column;
@@ -317,7 +298,6 @@ body.menu-open {
   box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
 }
 
-/* Main Content Area */
 .main-wrapper {
   display: flex;
   flex-direction: column;
@@ -329,7 +309,6 @@ body.menu-open {
   min-width: 0;
 }
 
-/* Header Section */
 .main-header {
   background: var(--surface);
   padding: 2rem;
@@ -356,7 +335,6 @@ body.menu-open {
   line-height: 1.5;
 }
 
-/* Stats Cards - Clean & Informative */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -1050,10 +1028,6 @@ body.menu-open {
   background: #c0392b;
 }
 
-/* ========================================= */
-/* LOGIN PAGE */
-/* ========================================= */
-
 .login-container {
   display: flex;
   justify-content: center;
@@ -1162,9 +1136,6 @@ button[type="submit"]:hover {
   text-decoration: underline;
 }
 
-/* ========================================= */
-/* RESPONSIVE DESIGN */
-/* ========================================= */
 
 /* Tablet (1024px ke bawah) */
 @media (max-width: 1024px) {
@@ -1194,7 +1165,6 @@ button[type="submit"]:hover {
   }
 }
 
-/* Mobile (768px ke bawah) */
 @media (max-width: 768px) {
   .cards {
     grid-template-columns: 1fr;
@@ -1235,7 +1205,6 @@ button[type="submit"]:hover {
     text-align: left;
   }
 
-  /* Attendance Table Responsive */
   .table-header,
   .table-row {
     grid-template-columns: 60px 100px 1fr;
@@ -1258,7 +1227,6 @@ button[type="submit"]:hover {
   }
 }
 
-/* Small Mobile (480px ke bawah) */
 @media (max-width: 480px) {
   .main-wrapper {
     padding: 1rem;
@@ -1302,7 +1270,6 @@ button[type="submit"]:hover {
     left: 0;
   }
 
-  /* Attendance Table Small Mobile */
   .table-header,
   .table-row {
     grid-template-columns: 50px 1fr 80px;
@@ -1326,7 +1293,6 @@ button[type="submit"]:hover {
     font-size: 1.5rem;
   }
 
-  /* Login Page Mobile */
   .login-card {
     padding: 28px 22px;
   }
@@ -1345,7 +1311,6 @@ button[type="submit"]:hover {
   }
 }
 
-/* Print Styles */
 @media print {
   .sidebar,
   .sidebar-right,
